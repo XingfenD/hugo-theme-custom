@@ -1,14 +1,29 @@
 {{ define "body-class" }}template-archives{{ end }}
 {{ define "main" }}
     <header>
+        <!-- Categories Section -->
         {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
         {{- $terms := $taxonomy.Pages -}}
         {{ if $terms }}
-        <h2 class="section-title">{{ $taxonomy.Title }}</h2>
+        <h2 class="section-title">类别 - {{ $taxonomy.Title }}</h2>
         <div class="subsection-list">
             <div class="article-list--tile">
                 {{ range $terms }}
                     {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Tags Section -->
+        {{- $tagTaxonomy := $.Site.GetPage "taxonomyTerm" "tags" -}}
+        {{- $tagTerms := $tagTaxonomy.Pages -}}
+        {{ if $tagTerms }}
+        <h2 class="section-title">标签 - {{ $tagTaxonomy.Title }}</h2>
+        <div class="subsection-list">
+            <div class="article-list--tile">
+                {{ range $tagTerms }}
+                    {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "tag") }}
                 {{ end }}
             </div>
         </div>
