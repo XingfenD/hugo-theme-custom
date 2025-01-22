@@ -147,3 +147,16 @@ params:
             enabled: true
         content:
             enabled: true
+
+menus:
+    social:
+      - name: "GitHub"     # 社交链接名称
+        url: "https://github.com/xingfend"  # 社交链接地址
+        params:
+            icon: "github"   # 社交图标（可选）
+            newTab: true     # 是否在新标签页打开链接
+      - name: "Bilibili"     # 社交链接名称
+        url: "https://space.bilibili.com/473214036"  # 社交链接地址
+        params:
+            icon: "bilibili"   # 社交图标（可选）
+            newTab: true     # 是否在新标签页打开链接
