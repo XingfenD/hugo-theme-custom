@@ -15,19 +15,25 @@
         </div>
         {{ end }}
 
-        <!-- Tags Section -->
-        {{- $tagTaxonomy := $.Site.GetPage "taxonomyTerm" "tags" -}}
-        {{- $tagTerms := $tagTaxonomy.Pages -}}
-        {{ if $tagTerms }}
-        <h2 class="section-title">标签 - {{ $tagTaxonomy.Title }}</h2>
-        <div class="subsection-list">
-            <div class="article-list--tile">
-                {{ range $tagTerms }}
-                    {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "tag") }}
-                {{ end }}
-            </div>
-        </div>
+<!-- Tags Section -->
+{{- $tagTaxonomy := $.Site.GetPage "taxonomyTerm" "tags" -}}
+{{- $tagTerms := $tagTaxonomy.Pages -}}
+{{ if $tagTerms }}
+<h2 class="section-title">标签 - {{ $tagTaxonomy.Title }}</h2>
+<div class="subsection-list">
+    <div class="article-list--tile">
+        {{ range $tagTerms }}
+            {{/* 获取当前标签下的所有页面 */}}
+            {{- $pages := .Pages -}}
+            {{/* 过滤掉 hidden 为 true 的页面 */}}
+            {{- $filteredPages := where $pages ".Params.hidden" "!=" true -}}
+            {{ if $filteredPages }}
+                {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "tag" "pages" $filteredPages) }}
+            {{ end }}
         {{ end }}
+    </div>
+</div>
+{{ end }}
     </header>
 
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
