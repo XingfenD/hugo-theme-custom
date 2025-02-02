@@ -114,9 +114,10 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --link-background-opacity: 0.5;
     --link-background-opacity-hover: 0.7;
 
-    --pre-background-color: #272822;
     --pre-text-color: #f8f8f2;
+    --pre-background-color: #272822;
 
+    /* inline code sentence */
     --code-background-color: rgba(0, 0, 0, 0.12);
     --code-text-color: #808080;
 
@@ -148,16 +149,19 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         0px 0px 1px rgba(0, 0, 0, 0.04);
 }
 
+// four space highlight instead of codeblock
+
 [data-scheme="light"] {
+    @import "partials/highlight/light.scss";
     --pre-text-color: #272822;
     --pre-background-color: #fafafa;
-    @import "partials/highlight/light.scss";
 }
 
 [data-scheme="dark"] {
+    @import "partials/highlight/dark.scss";
     --pre-text-color: #f8f8f2;
     --pre-background-color: #272822;
-    @import "partials/highlight/dark.scss";
+
 }
 
 :root {

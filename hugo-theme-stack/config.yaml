@@ -142,6 +142,9 @@ params:
         # Available values: auto, light, dark
         default: auto
 
+    # i18nSwitch:
+    #     toggle: true
+
     imageProcessing:
         cover:
             enabled: true
