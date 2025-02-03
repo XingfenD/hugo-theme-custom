@@ -30,7 +30,7 @@ let Stack = {
         /**
          * Add linear gradient background to tile style article
          */
-        const articleTile = document.querySelector('.article-list--tile');
+        const articleTile = document.querySelector('.category-list--tile');
         if (articleTile) {
             let observer = new IntersectionObserver(async (entries, observer) => {
                 entries.forEach(entry => {

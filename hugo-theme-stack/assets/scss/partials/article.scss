@@ -210,7 +210,7 @@
 }
 
 /* Tile style article list */
-.article-list--tile {
+.category-list--tile {
     article {
         border-radius: var(--card-border-radius);
         overflow: hidden;
@@ -247,6 +247,49 @@
                 height: 100%;
                 object-fit: cover;
             }
+        }
+
+        .article-details {
+            border-radius: var(--card-border-radius);
+            position: relative;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 2;
+            padding: 15px;
+
+            @include respond(sm) {
+                padding: 20px;
+            }
+        }
+
+        .article-title {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--card-text-color-main);
+
+            @include respond(sm) {
+                font-size: 2.2rem;
+            }
+        }
+    }
+}
+
+.tag-list--tile {
+    article {
+        border-radius: var(--card-border-radius);
+        overflow: hidden;
+        position: relative;
+        height: 350px;
+        width: 250px;
+        box-shadow: var(--shadow-l1);
+        transition: box-shadow 0.3s ease;
+        background-color: var(--card-background);
+
+        &:hover {
+            box-shadow: var(--shadow-l2);
         }
 
         .article-details {

@@ -7,14 +7,14 @@
         {{ if $terms }}
         <h2 class="section-title">类别 - {{ $taxonomy.Title }}</h2>
         <div class="subsection-list">
-            <div class="article-list--tile">
+            <div class="category-list--tile">
                 {{ range $terms }}
                     {{/* 获取当前标签下的所有页面 */}}
                     {{- $pages := .Pages -}}
                     {{/* 过滤掉 hidden 为 true 的页面 */}}
                     {{- $filteredPages := where $pages ".Params.hidden" "!=" true -}}
                     {{ if $filteredPages }}
-                        {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "tag" "pages" $filteredPages) }}
+                        {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
                     {{ end }}
                 {{ end }}
             </div>
@@ -27,14 +27,14 @@
         {{ if $tagTerms }}
         <h2 class="section-title">标签 - {{ $tagTaxonomy.Title }}</h2>
         <div class="subsection-list">
-            <div class="article-list--tile">
+            <div class="tag-list--tile">
                 {{ range $tagTerms }}
                     {{/* 获取当前标签下的所有页面 */}}
                     {{- $pages := .Pages -}}
                     {{/* 过滤掉 hidden 为 true 的页面 */}}
                     {{- $filteredPages := where $pages ".Params.hidden" "!=" true -}}
                     {{ if $filteredPages }}
-                        {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "tag" "pages" $filteredPages) }}
+                        {{ partial "article-list/tile" (dict "context" . "Type" "tag" "pages" $filteredPages) }}
                     {{ end }}
                 {{ end }}
             </div>
