@@ -27,6 +27,11 @@ params:
             local: true
             src: img/avatar.png
 
+    archives:
+        showCategories:
+        showTags:
+        showDates:
+
     article:
         headingAnchor: false
         math: false

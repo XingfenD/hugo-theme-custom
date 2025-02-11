@@ -3,16 +3,14 @@
     <!-- NOTE: control the content of archive page -->
     <header>
         <!-- Categories Section -->
-        {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
-        {{- $terms := $taxonomy.Pages -}}
-        {{ if $terms }}
-        <h2 class="section-title">类别 - {{ $taxonomy.Title }}</h2>
+        {{- $cateTaxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
+        {{- $cateTerms := $cateTaxonomy.Pages -}}
+        {{ if and (eq (.Site.Params.archives.showCategories | default true) true) (gt (len $cateTerms) 0) }}
+        <h2 class="section-title">类别 - {{ $cateTaxonomy.Title }}</h2>
         <div class="subsection-list">
             <div class="category-list--tile">
-                {{ range $terms }}
-                    {{/* 获取当前标签下的所有页面 */}}
+                {{ range $cateTerms }}
                     {{- $pages := .Pages -}}
-                    {{/* 过滤掉 hidden 为 true 的页面 */}}
                     {{- $filteredPages := where $pages ".Params.hidden" "!=" true -}}
                     {{ if $filteredPages }}
                         {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
@@ -25,7 +23,7 @@
         <!-- Tags Section -->
         {{- $tagTaxonomy := $.Site.GetPage "taxonomyTerm" "tags" -}}
         {{- $tagTerms := $tagTaxonomy.Pages -}}
-        {{ if $tagTerms }}
+        {{ if and (eq (.Site.Params.archives.showTags | default false) true) (gt (len $tagTerms) 0) }}
         <h2 class="section-title">标签 - {{ $tagTaxonomy.Title }}</h2>
         <div class="subsection-list">
             <div class="tag-list--tile">
@@ -47,6 +45,7 @@
     {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
     {{ $filtered := ($pages | intersect $notHidden) }}
 
+    {{ if eq (.Site.Params.archives.showDates | default true) true }}
     {{ range $filtered.GroupByDate "2006" }}
     {{ $id := lower (replace .Key " " "-") }}
     <div class="archives-group" id="{{ $id }}">
@@ -57,6 +56,7 @@
             {{ end }}
         </div>
     </div>
+    {{ end }}
     {{ end }}
 
     {{ partialCached "footer/footer" . }}
