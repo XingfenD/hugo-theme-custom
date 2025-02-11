@@ -1,5 +1,6 @@
 {{ define "body-class" }}template-archives{{ end }}
 {{ define "main" }}
+    <!-- NOTE: control the content of archive page -->
     <header>
         <!-- Categories Section -->
         {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
