@@ -12,7 +12,7 @@
             <p>
                 <label>{{ T "search.title" }}</label>
                 <input id="searchInput" name="keyword" required placeholder="{{ T `search.placeholder` }}" />
-            
+
                 <button title="{{ T `search.title` }}">
                     {{ partial "helper/icon" "search" }}
                 </button>
@@ -23,7 +23,7 @@
             <h3 class="search-result--title section-title"></h3>
             <div class="search-result--list article-list--compact"></div>
         </div>
-        
+
         <script>
             window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}"
         </script>
