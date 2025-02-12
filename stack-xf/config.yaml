@@ -135,12 +135,6 @@ params:
 
         page:
           - type: toc
-          - type: categories
-            params:
-              limit: 5
-          - type: tag-cloud
-            params:
-              limit: 5
 
     opengraph:
         twitter:
