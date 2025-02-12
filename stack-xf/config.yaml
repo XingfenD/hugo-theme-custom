@@ -29,7 +29,7 @@ params:
 
     archives:
         showCategories:
-        showTags:
+        showTags: true
         showDates:
 
     article:
@@ -125,6 +125,7 @@ params:
     widgets:
         homepage:
           - type: search
+          - type: archives
           - type: categories
             params:
               limit: 10

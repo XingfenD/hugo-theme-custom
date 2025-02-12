@@ -3,7 +3,7 @@
     <!-- NOTE: control the content of archive page -->
     <header>
         <!-- Categories Section -->
-        {{- $cateTaxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
+        {{- $cateTaxonomy := $.Site.GetPage "categories" -}}
         {{- $cateTerms := $cateTaxonomy.Pages -}}
         {{ if and (eq (.Site.Params.archives.showCategories | default true) true) (gt (len $cateTerms) 0) }}
         <h2 class="section-title">类别 - {{ $cateTaxonomy.Title }}</h2>
@@ -21,7 +21,7 @@
         {{ end }}
 
         <!-- Tags Section -->
-        {{- $tagTaxonomy := $.Site.GetPage "taxonomyTerm" "tags" -}}
+        {{- $tagTaxonomy := $.Site.GetPage "tags" -}}
         {{- $tagTerms := $tagTaxonomy.Pages -}}
         {{ if and (eq (.Site.Params.archives.showTags | default false) true) (gt (len $tagTerms) 0) }}
         <h2 class="section-title">标签 - {{ $tagTaxonomy.Title }}</h2>
