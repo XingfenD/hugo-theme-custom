@@ -10,7 +10,8 @@
 
         <div class="section-card">
             <div class="section-details">
-                <h3 class="section-count">{{ T "list.page" (len .Pages) }}</h3>
+                {{- $filteredPages := where .Pages ".Params.hidden" "!=" true -}}
+                <h3 class="section-count">{{ T "list.page" (len $filteredPages) }}</h3>
                 <h1 class="section-term">{{ .Title }}</h1>
                 {{ with .Params.description }}
                     <h2 class="section-description">{{ . }}</h2>
