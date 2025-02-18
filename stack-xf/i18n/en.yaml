@@ -55,6 +55,9 @@ widget:
         title:
             other: Categories
 
+    curTags:
+        title:
+            other: Tags of current blog
 search:
     title:
         other: Search

@@ -49,6 +49,10 @@ widget:
         title:
             other: 分类
 
+    curTags:
+        title:
+            other: 当前标签
+
 search:
     title:
         other: 搜索

@@ -135,6 +135,7 @@ params:
 
         page:
           - type: toc
+          - type: cur-tags
 
     opengraph:
         twitter:
