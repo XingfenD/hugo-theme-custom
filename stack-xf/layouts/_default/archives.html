@@ -20,6 +20,24 @@
         </div>
         {{ end }}
 
+        <!-- Collections Section -->
+        {{- $collectionTaxonomy := $.Site.GetPage "collections" -}}
+        {{- $collectionTerms := $collectionTaxonomy.Pages -}}
+        {{ if and (eq (.Site.Params.archives.showCollections | default false) true) (gt (len $collectionTerms) 0) }}
+        <h2 class="section-title">合集 - {{ $collectionTaxonomy.Title }}</h2>
+        <div class="subsection-list">
+            <div class="category-list--tile">
+                {{ range $collectionTerms }}
+                    {{- $pages := .Pages -}}
+                    {{- $filteredPages := where $pages ".Params.hidden" "!=" true -}}
+                    {{ if $filteredPages }}
+                        {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
         <!-- Tags Section -->
         {{- $tagTaxonomy := $.Site.GetPage "tags" -}}
         {{- $tagTerms := $tagTaxonomy.Pages -}}

@@ -29,6 +29,7 @@ params:
 
     archives:
         showCategories:
+        showCollections: true
         showTags: true
         showDates:
 
